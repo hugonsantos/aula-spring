@@ -46,6 +46,9 @@ public class TesteConfig implements CommandLineRunner {
 		Pedido p2 = new Pedido(null, Instant.parse("2020-03-21T10:19:35Z"), PedidoStatus.AGUARDANDO_PAGAMENTO, u4);
 		Pedido p3 = new Pedido(null, Instant.parse("2019-10-05T13:55:00Z"), PedidoStatus.ENVIADO, u1);
 		Pedido p4 = new Pedido(null, Instant.parse("2021-01-11T14:39:58Z"), PedidoStatus.PAGO, u2);
+		
+		usuarioRepositorio.saveAll(Arrays.asList(u1, u2, u3, u4));
+		pedidoRepositorio.saveAll(Arrays.asList(p1, p2, p3, p4));
 
 		Categoria c1 = new Categoria(null, "Eletronicos");
 		Categoria c2 = new Categoria(null, "Livros");
@@ -56,10 +59,17 @@ public class TesteConfig implements CommandLineRunner {
 		Produto pd3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
 		Produto pd4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
 		Produto pd5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
-
-		usuarioRepositorio.saveAll(Arrays.asList(u1, u2, u3, u4));
-		pedidoRepositorio.saveAll(Arrays.asList(p1, p2, p3, p4));
+		
 		categoriaRepositorio.saveAll(Arrays.asList(c1, c2, c3));
+		produtoRepositorio.saveAll(Arrays.asList(pd1, pd2, pd3, pd4, pd5));
+		
+		pd1.getCategorias().add(c2);
+		pd2.getCategorias().add(c1);
+		pd2.getCategorias().add(c3);
+		pd3.getCategorias().add(c3);
+		pd4.getCategorias().add(c3);
+		pd5.getCategorias().add(c2);
+
 		produtoRepositorio.saveAll(Arrays.asList(pd1, pd2, pd3, pd4, pd5));
 	}
 }
