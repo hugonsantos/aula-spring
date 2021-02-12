@@ -17,19 +17,19 @@ import com.aulaspring.servicos.PedidoServico;
 public class PedidoRecurso {
 
 	@Autowired
-	private PedidoServico pedidoServico;
+	private PedidoServico servico;
 	
 	@GetMapping
 	public ResponseEntity<List<Pedido>> buscarTodos() {
 		
-		List<Pedido> lista = pedidoServico.buscarTodos();
+		List<Pedido> lista = servico.buscarTodos();
 		return ResponseEntity.ok().body(lista);
 	}
 	
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Pedido> buscarPedido(@PathVariable Long id) {
 		
-		Pedido p = pedidoServico.buscarPedido(id);
+		Pedido p = servico.buscarPedido(id);
 		return ResponseEntity.ok().body(p);
 	}
 }

@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aulaspring.entidades.Usuario;
-import com.aulaspring.servicos.UsuarioServico;
+import com.aulaspring.entidades.Categoria;
+import com.aulaspring.servicos.CategoriaServico;
 
 @RestController
-@RequestMapping(value = "/usuarios")
-public class UsuarioRecurso {
+@RequestMapping(value = "/categorias")
+public class CategoriaRecurso {
 
 	@Autowired
-	private UsuarioServico servico;
+	private CategoriaServico servico;
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> buscarTodos() {
+	public ResponseEntity<List<Categoria>> buscarTodos() {
 		
-		List<Usuario> lista = servico.buscarTodos();
+		List<Categoria> lista = servico.buscarTodos();
 		return ResponseEntity.ok().body(lista);
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Usuario> buscarUsuario(@PathVariable Long id) {
+	public ResponseEntity<Categoria> buscarCategoria(@PathVariable Long id) {
 		
-		Usuario u = servico.buscarUsuario(id);
-		return ResponseEntity.ok().body(u);
+		Categoria c = servico.buscarCategoria(id);
+		return ResponseEntity.ok().body(c);
 	}
 }

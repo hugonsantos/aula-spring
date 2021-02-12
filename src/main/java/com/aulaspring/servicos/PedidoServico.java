@@ -13,14 +13,14 @@ import com.aulaspring.repositorios.PedidoRepositorio;
 public class PedidoServico {
 
 	@Autowired
-	private PedidoRepositorio pedidoRepositorio;
+	private PedidoRepositorio repositorio;
 	
 	public List<Pedido> buscarTodos() {
-		return pedidoRepositorio.findAll();
+		return repositorio.findAll();
 	}
 	
 	public Pedido buscarPedido(Long id) {
-		Optional<Pedido> pedido = pedidoRepositorio.findById(id);
+		Optional<Pedido> pedido = repositorio.findById(id);
 		return pedido.get();
 	}
 }

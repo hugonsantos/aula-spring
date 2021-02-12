@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.aulaspring.entidades.Categoria;
 import com.aulaspring.entidades.Pedido;
 import com.aulaspring.entidades.Usuario;
 import com.aulaspring.entidades.enums.PedidoStatus;
+import com.aulaspring.repositorios.CategoriaRepositorio;
 import com.aulaspring.repositorios.PedidoRepositorio;
 import com.aulaspring.repositorios.UsuarioRepositorio;
 
@@ -23,6 +25,9 @@ public class TesteConfig implements CommandLineRunner{
 	
 	@Autowired
 	private PedidoRepositorio pedidoRepositorio;
+	
+	@Autowired
+	private CategoriaRepositorio categoriaRepositorio;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -37,7 +42,12 @@ public class TesteConfig implements CommandLineRunner{
 		Pedido p3 = new Pedido(null, Instant.parse("2019-10-05T13:55:00Z"), PedidoStatus.ENVIADO, u1);
 		Pedido p4 = new Pedido(null, Instant.parse("2021-01-11T14:39:58Z"), PedidoStatus.PAGO, u2);
 		
+		Categoria c1 = new Categoria(null, "Eletronicos");
+		Categoria c2 = new Categoria(null, "Livros");
+		Categoria c3 = new Categoria(null, "Computadores");
+		
 		usuarioRepositorio.saveAll(Arrays.asList(u1, u2, u3, u4));
 		pedidoRepositorio.saveAll(Arrays.asList(p1, p2, p3, p4));
+		categoriaRepositorio.saveAll(Arrays.asList(c1, c2, c3));
 	}
 }

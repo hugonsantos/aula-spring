@@ -13,14 +13,14 @@ import com.aulaspring.repositorios.UsuarioRepositorio;
 public class UsuarioServico {
 
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
+	private UsuarioRepositorio repositorio;
 	
 	public List<Usuario> buscarTodos() {
-		return usuarioRepositorio.findAll();
+		return repositorio.findAll();
 	}
 	
 	public Usuario buscarUsuario(Long id) {
-		Optional<Usuario> usuario = usuarioRepositorio.findById(id);
+		Optional<Usuario> usuario = repositorio.findById(id);
 		return usuario.get();
 	}
 }
