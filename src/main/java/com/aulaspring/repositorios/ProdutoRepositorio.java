@@ -1,0 +1,9 @@
+package com.aulaspring.repositorios;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.aulaspring.entidades.Produto;
+
+public interface ProdutoRepositorio extends JpaRepository<Produto, Long> {
+
+}
