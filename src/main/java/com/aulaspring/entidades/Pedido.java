@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -99,6 +98,18 @@ public class Pedido implements Serializable {
 
 	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
+	}
+	
+	public Double getTotal() {
+		
+		double soma = 0.0;
+		
+		for(ItemPedido ip : itens) {
+			
+			soma += ip.getSubTotal();
+		}
+		
+		return soma;
 	}
 
 	@Override
